@@ -4,13 +4,47 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { JetBrains_Mono } from "next/font/google";
-import { HiMenu, HiX } from "react-icons/hi";
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
   weight: ["400", "500", "700"],
 });
+
+// SVG иконки для меню
+const MenuIcon = () => (
+  <svg 
+    className="w-6 h-6" 
+    fill="none" 
+    stroke="currentColor" 
+    viewBox="0 0 24 24" 
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth={2} 
+      d="M4 6h16M4 12h16M4 18h16" 
+    />
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg 
+    className="w-6 h-6" 
+    fill="none" 
+    stroke="currentColor" 
+    viewBox="0 0 24 24" 
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth={2} 
+      d="M6 18L18 6M6 6l12 12" 
+    />
+  </svg>
+);
 
 export default function PortfolioPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -76,7 +110,7 @@ export default function PortfolioPage() {
             className="sm:hidden text-gray-300 text-2xl ml-2 focus:outline-none z-50"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <HiX /> : <HiMenu />}
+            {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
 
           {/* Navigation */}
